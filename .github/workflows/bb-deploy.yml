@@ -38,6 +38,7 @@ jobs:
                 "chainId": 10
               }
             ]
+            
           deploy-command: "make exe"
           buildbear-token: "a"  
          
