@@ -1,0 +1,42 @@
+name: Test  Action
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
+        run: forge --version
+
+        
+      - name: test_ci
+        uses: arjunbuildbear/test2@57
+        
+      
+            
+        with: 
+          network: |
+            [
+              {
+                "chainId": 1
+              },
+              {
+                "chainId": 59144
+              }
+            ]
+          deploy-command: "forge script script/DeployMarket.s.sol --rpc-url=$(BUILDBEAR_RPC_URL) --broadcast --mnemonics="$(MNEMONIC)" --legacy --slow"
+          buildbear-token: "a"
+          working-directory: "app"  
+         
