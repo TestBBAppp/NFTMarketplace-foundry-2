@@ -22,7 +22,7 @@ jobs:
 
         
       - name: test_ci
-        uses: arjunbuildbear/test2@57
+        uses: arjunbuildbear/test2@56
         
       
             
@@ -36,7 +36,6 @@ jobs:
                 "chainId": 59144
               }
             ]
-          deploy-command: "forge script script/DeployMarket.s.sol --rpc-url=$(BUILDBEAR_RPC_URL) --broadcast --mnemonics="$(MNEMONIC)" --legacy --slow"
-          buildbear-token: "a"
-          working-directory: "app"  
+          deploy-command: "make exe"
+          buildbear-token: "a"  
          
