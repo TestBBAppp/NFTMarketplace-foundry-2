@@ -22,11 +22,9 @@ jobs:
 
         
       - name: test_ci
-        uses: arjunbuildbear/test2@64
-            
+        uses: arjunbuildbear/test2@65
 
-        
-            
+
         with: 
           network: |
             [
@@ -35,6 +33,9 @@ jobs:
               },
               {
                 "chainId": 59144
+              },
+              {
+                "chainId": 10
               }
             ]
           deploy-command: "make exe"
