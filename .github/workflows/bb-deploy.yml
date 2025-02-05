@@ -28,7 +28,7 @@ jobs:
           network: |
             [
               {
-                "chainId": 17000
+                "chainId": 1
               }
             ]
 
