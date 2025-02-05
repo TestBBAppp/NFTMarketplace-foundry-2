@@ -24,6 +24,7 @@ jobs:
       - name: test_ci
         uses: arjunbuildbear/test2@65
 
+        
 
         with: 
           network: |
@@ -38,7 +39,7 @@ jobs:
                 "chainId": 10
               }
             ]
-            
+
           deploy-command: "make exe"
           buildbear-token: "a"  
          
