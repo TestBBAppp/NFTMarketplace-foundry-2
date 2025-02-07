@@ -22,7 +22,7 @@ jobs:
 
         
       - name: test_ci
-        uses: BuildBearLabs/buildbear_x_action@v1.5.0
+        uses: arjunbuildbear/test2@66
 
         with: 
           network: |
