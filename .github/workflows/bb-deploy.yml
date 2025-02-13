@@ -25,13 +25,13 @@ jobs:
 
         
       - name: test_ci
-        uses: arjunbuildbear/test2@68
+        uses: uses: BuildBearLabs/buildbear_x_action@v1.4.1
 
         with: 
           network: |
             [
               {
-                "chainId": 17000
+                "chainId": 1
               }
             ]
 
