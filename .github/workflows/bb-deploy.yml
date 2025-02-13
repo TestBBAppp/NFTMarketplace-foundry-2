@@ -19,6 +19,9 @@ jobs:
 
       - name: Show Forge version
         run: forge --version
+      - name: Test
+        run: forge test 
+      
 
         
       - name: test_ci
