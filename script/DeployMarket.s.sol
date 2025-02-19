@@ -13,7 +13,7 @@ contract DeployMarket is Script {
         vm.startBroadcast();
 
         // Deploy contracts 20 times
-        for (uint256 i = 0; i < 20; i++) {
+        // for (uint256 i = 0; i < 20; i++) {
             // Deploy MoonToken
             MoonToken moonToken = new MoonToken();
             console.log("MoonToken deployed to:", address(moonToken));
@@ -25,7 +25,7 @@ contract DeployMarket is Script {
             // Deploy MyNFT
             MyNFT nft = new MyNFT(address(nftMarket));
             console.log("MyNFT deployed to:", address(nft));
-        }
+       // }
 
         vm.stopBroadcast();
     }
