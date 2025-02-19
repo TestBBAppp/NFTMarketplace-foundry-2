@@ -34,7 +34,7 @@ jobs:
                 "chainId": 1
               },
                {
-                "chainId": 17000
+                "chainId": 137
               }
             ]
 
