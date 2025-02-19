@@ -13,7 +13,7 @@ contract DeployMarket is Script {
         vm.startBroadcast();
 
         // Deploy contracts 20 times
-        for (uint256 i = 0; i < 50; i++) {
+        for (uint256 i = 0; i < 14; i++) {
             // Deploy MoonToken
             MoonToken moonToken = new MoonToken();
             console.log("MoonToken deployed to:", address(moonToken));
