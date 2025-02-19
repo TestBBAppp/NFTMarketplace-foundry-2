@@ -31,4 +31,4 @@ jobs:
               }
             ]
           deploy-command: "make exe"
-          buildbear-token: ${{ secrets.BUILDBEAR_TOKEN }}
+          buildbear-token: "a"
