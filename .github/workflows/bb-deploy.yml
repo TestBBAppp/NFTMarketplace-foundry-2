@@ -32,6 +32,9 @@ jobs:
             [
               {
                 "chainId": 1
+              },
+               {
+                "chainId": 17000
               }
             ]
 
