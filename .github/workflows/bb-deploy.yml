@@ -33,9 +33,6 @@ jobs:
             [
               {
                 "chainId": 1
-              },
-               {
-                "chainId": 8453
               }
             ]
 
