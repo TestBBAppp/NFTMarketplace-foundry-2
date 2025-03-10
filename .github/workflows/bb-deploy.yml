@@ -17,9 +17,11 @@ jobs:
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
         shell: bash
 
-      - name: Run Foundryup directly
+      - name: Find and run Foundryup directly
         run: |
+          # Find the location of the foundryup script and run it
           cd $HOME
+          ls -l # List the files to confirm where foundryup is installed
           ./foundryup
         shell: bash
 
