@@ -17,13 +17,10 @@ jobs:
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
         shell: bash
 
-      - name: Find and run Foundryup directly
+      - name: Run foundryup from the correct directory
         run: |
-          # Search for the foundryup script
-          find / -name "foundryup" 2>/dev/null
-          # Assuming foundryup is installed in /home/runner/.foundryup or similar
-          cd /home/runner/.foundryup || exit 1
-          ./foundryup
+          # Run foundryup from the correct directory
+          /home/runner/.config/.foundry/bin/foundryup
         shell: bash
 
       - name: Show Forge version
