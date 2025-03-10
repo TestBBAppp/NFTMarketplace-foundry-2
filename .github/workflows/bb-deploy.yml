@@ -15,13 +15,12 @@ jobs:
       - name: Install BuildBear's Foundry Fork
         run: |
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
-          echo "source /home/runner/.bashrc" >> $GITHUB_ENV
         shell: bash
 
-      - name: Install Foundry using foundryup
+      - name: Run Foundryup directly
         run: |
-          source /home/runner/.bashrc
-          foundryup
+          cd $HOME
+          ./foundryup
         shell: bash
 
       - name: Show Forge version
