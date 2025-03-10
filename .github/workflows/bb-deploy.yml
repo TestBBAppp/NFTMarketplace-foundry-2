@@ -23,6 +23,12 @@ jobs:
           /home/runner/.config/.foundry/bin/foundryup
         shell: bash
 
+
+      - name: Source bashrc to update PATH
+        run: |
+          source /home/runner/.bashrc  # Ensure environment is updated
+        shell: bash        
+
       - name: Show Forge version
         run: forge --version
 
