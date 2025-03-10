@@ -9,26 +9,22 @@ jobs:
         with:
           submodules: recursive
       
-      - name: Install BuildBear's Foundry Fork
+      - name: Install and setup Foundry
         run: |
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
-        shell: bash
-      
-      - name: Setup Foundry
-        run: |
-          export PATH="$HOME/.foundry/bin:$PATH"
+          source /home/runner/.bashrc
           foundryup
         shell: bash
       
       - name: Run Forge version
         run: |
-          export PATH="$HOME/.foundry/bin:$PATH"
+          source /home/runner/.bashrc
           forge --version
         shell: bash
       
       - name: Test
         run: |
-          export PATH="$HOME/.foundry/bin:$PATH"
+          source /home/runner/.bashrc
           forge test
         shell: bash
       
