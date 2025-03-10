@@ -1,5 +1,7 @@
 name: Test Action
 on: [push]
+env:
+  BUILDBEAR_BASE_URL: "https://api.dev.buildbear.io"
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -40,23 +42,6 @@ jobs:
       
       - name: Test
         run: forge test
-      
-      - name: Thorough search for bbOut
-        run: |
-          echo "Searching for bbOut folder in all directories..."
-          find / -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found at root level"
-          
-          echo "Searching in home directory..."
-          find $HOME -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found in home"
-          
-          echo "Searching in current working directory and subdirectories..."
-          find . -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found in current directory"
-          
-          echo "Checking current directory contents..."
-          ls -la
-          
-          echo "Listing all directories in the first level..."
-          find . -maxdepth 1 -type d -exec ls -la {} \;
       
       - name: test_ci
         uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
