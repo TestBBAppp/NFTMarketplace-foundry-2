@@ -65,7 +65,7 @@ jobs:
         run: forge test
 
       - name: Test CI with BuildBear
-        uses: BuildBearLabs/buildbear_x_action@test/ncc
+        uses: BuildBearLabs/buildbear_x_action@setup-ci-cd
         with:
           network: |
             [
