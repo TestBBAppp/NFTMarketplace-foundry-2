@@ -25,6 +25,18 @@ jobs:
       
       - name: Test
         run: forge test
+
+      - name: Search bbOut folder
+        run: |
+          echo "Searching for bbOut folder..."
+          find . -name "bbOut" -type d
+          if [ -d "bbOut" ]; then
+            echo "bbOut found in root directory"
+            ls -la bbOut
+          else
+            echo "Looking for bbOut in other locations..."
+            find . -name "bbOut" -type d -exec ls -la {} \;
+          fi
       
       - name: test_ci
         uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
