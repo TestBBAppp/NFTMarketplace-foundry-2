@@ -16,7 +16,7 @@ jobs:
       
       - name: Setup and use Foundry
         run: |
-          source /home/runner/.bashrc
+          export PATH="$HOME/.foundry/bin:$PATH"
           foundryup
           echo "PATH=$HOME/.foundry/bin:$PATH" >> $GITHUB_ENV
         shell: bash
