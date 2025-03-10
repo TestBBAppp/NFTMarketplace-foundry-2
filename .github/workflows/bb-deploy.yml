@@ -9,24 +9,23 @@ jobs:
         with:
           submodules: recursive
       
-      - name: Install and setup Foundry
+      - name: Install Foundry
         run: |
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
+        shell: bash
+      
+      - name: Setup and use Foundry
+        run: |
           source /home/runner/.bashrc
           foundryup
+          echo "PATH=$HOME/.foundry/bin:$PATH" >> $GITHUB_ENV
         shell: bash
       
       - name: Run Forge version
-        run: |
-          source /home/runner/.bashrc
-          forge --version
-        shell: bash
+        run: forge --version
       
       - name: Test
-        run: |
-          source /home/runner/.bashrc
-          forge test
-        shell: bash
+        run: forge test
       
       - name: test_ci
         uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
