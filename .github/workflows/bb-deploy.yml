@@ -9,14 +9,26 @@ jobs:
         with:
           submodules: recursive
       
-      - name: Install Foundry
+      - name: Install Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      
+      - name: Clone Foundry repository
         run: |
-          curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
+          git clone https://github.com/BuildBearLabs/foundry.git
         shell: bash
       
-      - name: Setup and use Foundry
+      - name: Build Foundry from source
         run: |
-          $HOME/.config/.foundry/bin/foundryup
+          cd foundry
+          cargo build
+          mkdir -p $HOME/.config/.foundry/bin
+          cp target/debug/forge $HOME/.config/.foundry/bin/
+          cp target/debug/cast $HOME/.config/.foundry/bin/
+          cp target/debug/anvil $HOME/.config/.foundry/bin/
+          cp target/debug/chisel $HOME/.config/.foundry/bin/
           echo "PATH=$HOME/.config/.foundry/bin:$PATH" >> $GITHUB_ENV
         shell: bash
       
@@ -25,7 +37,7 @@ jobs:
       
       - name: Test
         run: forge test
-
+      
       - name: Thorough search for bbOut
         run: |
           echo "Searching for bbOut folder in all directories..."
