@@ -19,9 +19,10 @@ jobs:
 
       - name: Find and run Foundryup directly
         run: |
-          # Find the location of the foundryup script and run it
-          cd $HOME
-          ls -l # List the files to confirm where foundryup is installed
+          # Search for the foundryup script
+          find / -name "foundryup" 2>/dev/null
+          # Assuming foundryup is installed in /home/runner/.foundryup or similar
+          cd /home/runner/.foundryup || exit 1
           ./foundryup
         shell: bash
 
