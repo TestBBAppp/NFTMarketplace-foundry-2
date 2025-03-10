@@ -53,6 +53,7 @@ jobs:
           echo "PATH=$HOME/.config/.foundry/bin:$PATH" >> $GITHUB_ENV
         shell: bash
 
+
       - name: Run Forge version
         run: forge --version
 
