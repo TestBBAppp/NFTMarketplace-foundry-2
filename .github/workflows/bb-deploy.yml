@@ -1,40 +1,36 @@
 name: Test Action
-
 on: [push]
-
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           submodules: recursive
-
+      
       - name: Install BuildBear's Foundry Fork
         run: |
           curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
         shell: bash
-
-      - name: Run foundryup from the correct directory
+      
+      - name: Setup Foundry
         run: |
-          # Run foundryup from the correct directory
-          /home/runner/.config/.foundry/bin/foundryup
+          export PATH="$HOME/.foundry/bin:$PATH"
+          foundryup
         shell: bash
-
-      - name: Add Foundry to PATH
+      
+      - name: Run Forge version
         run: |
-          echo "export PATH=/home/runner/.config/.foundry/bin:$PATH" >> ~/.bashrc
-          source ~/.bashrc  # Reload the shell to apply the updated PATH
+          export PATH="$HOME/.foundry/bin:$PATH"
+          forge --version
         shell: bash
-
-
-      - name: Show Forge version
-        run: forge --version
-
+      
       - name: Test
-        run: forge test 
+        run: |
+          export PATH="$HOME/.foundry/bin:$PATH"
+          forge test
+        shell: bash
       
       - name: test_ci
         uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
