@@ -1,7 +1,6 @@
-name: Test  Action
+name: Test Action
 
 on: [push]
-
 
 jobs:
   test:
@@ -13,21 +12,20 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install Foundry
-        uses: foundry-rs/foundry-toolchain@v1
-        with:
-          version: nightly
+      - name: Install BuildBear's Foundry Fork
+        run: |
+          curl -L https://raw.githubusercontent.com/BuildBearLabs/foundry/master/foundryup/install | bash
+          foundryup
+        shell: bash
 
       - name: Show Forge version
         run: forge --version
+
       - name: Test
         run: forge test 
       
-
-        
       - name: test_ci
-        uses: arjunbuildbear/test2@76
-
+        uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
         with: 
           network: |
             [
@@ -35,7 +33,5 @@ jobs:
                 "chainId": 1
               }
             ]
-
           deploy-command: "make exe"
-          buildbear-token: "a"  
-         
+          buildbear-token: "a"
