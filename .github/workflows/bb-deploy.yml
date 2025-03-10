@@ -16,8 +16,8 @@ jobs:
       
       - name: Setup and use Foundry
         run: |
-          $HOME/.foundry/bin/foundryup
-          echo "PATH=$HOME/.foundry/bin:$PATH" >> $GITHUB_ENV
+          $HOME/.config/.foundry/bin/foundryup
+          echo "PATH=$HOME/.config/.foundry/bin:$PATH" >> $GITHUB_ENV
         shell: bash
       
       - name: Run Forge version
