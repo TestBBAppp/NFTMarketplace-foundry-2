@@ -23,11 +23,12 @@ jobs:
           /home/runner/.config/.foundry/bin/foundryup
         shell: bash
 
-
-      - name: Source bashrc to update PATH
+      - name: Add Foundry to PATH
         run: |
-          source /home/runner/.bashrc  # Ensure environment is updated
-        shell: bash        
+          echo "export PATH=/home/runner/.config/.foundry/bin:$PATH" >> ~/.bashrc
+          source ~/.bashrc  # Reload the shell to apply the updated PATH
+        shell: bash
+
 
       - name: Show Forge version
         run: forge --version
