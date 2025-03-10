@@ -26,17 +26,22 @@ jobs:
       - name: Test
         run: forge test
 
-      - name: Search bbOut folder
+      - name: Thorough search for bbOut
         run: |
-          echo "Searching for bbOut folder..."
-          find . -name "bbOut" -type d
-          if [ -d "bbOut" ]; then
-            echo "bbOut found in root directory"
-            ls -la bbOut
-          else
-            echo "Looking for bbOut in other locations..."
-            find . -name "bbOut" -type d -exec ls -la {} \;
-          fi
+          echo "Searching for bbOut folder in all directories..."
+          find / -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found at root level"
+          
+          echo "Searching in home directory..."
+          find $HOME -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found in home"
+          
+          echo "Searching in current working directory and subdirectories..."
+          find . -name "bbOut" -type d 2>/dev/null || echo "No bbOut directories found in current directory"
+          
+          echo "Checking current directory contents..."
+          ls -la
+          
+          echo "Listing all directories in the first level..."
+          find . -maxdepth 1 -type d -exec ls -la {} \;
       
       - name: test_ci
         uses: BuildBearLabs/buildbear_x_action@feat/auto-verification-test-simulation
